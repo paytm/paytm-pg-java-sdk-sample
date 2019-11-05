@@ -85,7 +85,6 @@ public class Demo {
 
 		/** Set Logger Level for Paytm logs */
 		LibraryConstants.LOGGER.setLevel(Level.ALL);
-
 		/** setting log file path "/paytm/MyLogFile.log" */
 		try {
 			FileHandler fh = null;
@@ -105,12 +104,12 @@ public class Demo {
 		String mid = "xxxxxxxxxxxxxxxxxxxx";
 		// merchant key is provided at the time of onboarding
 		String key = "xxxxxxxxxxxxxxxx";
-		String clientId = "C11";
+
 		String website = "WEBSTAGING";
 		String callbackUrl = "http://localhost:8080/PaytmNativeApiJavaIntegration/pgResponse.jsp";
 
 		/** Setting Initial Parameters */
-		MerchantProperties.initialize(env, mid, key, clientId, website);
+		MerchantProperties.initialize(env, mid, key, website);
 
 		/** Setting Callback URL */
 		MerchantProperties.setCallbackUrl(callbackUrl);
@@ -335,6 +334,7 @@ public class Demo {
 
 		/** Unique order for each order request */
 		String orderId = "orderId";
+
 		Time readTimeout = new Time(5, TimeUnit.MINUTES);
 
 		/**
@@ -379,6 +379,7 @@ public class Demo {
 		String txnId = "transactionId";
 		/** Transaction Type returned in Payment Api */
 		String txnType = "REFUND";
+
 		/**
 		 * Refund Amount to be refunded (should not be greater than the Amount paid in
 		 * the Transaction)
