@@ -100,19 +100,20 @@ public class Demo {
 
 		/** Initialize mandatory Parameters */
 		String env = LibraryConstants.STAGING_ENVIRONMENT;
-		// merchant id (mid) is provided at the time of onboarding
-		String mid = "xxxxxxxxxxxxxxxxxxxx";
-		// merchant key is provided at the time of onboarding
-		String key = "xxxxxxxxxxxxxxxx";
+		// Find your Merchant ID and Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
+		String mid = "YOUR_MID_HERE";
+		String key = "YOUR_KEY_HERE";
+       /* Website: For Staging - WEBSTAGING, For Production - DEFAULT */
+		String website = "YOUR_WEBSITE_NAME";
+		/* Client Id e.g C11 */
+		String clientid = "YOUR_CLIENT_ID_HERE";
 
-		String website = "WEBSTAGING";
-		String callbackUrl = "http://localhost:8080/PaytmNativeApiJavaIntegration/pgResponse.jsp";
+        /** Setting Callback URL */
+		String callbackUrl = "MERCHANT_CALLBACK_URL";
+		MerchantProperties.setCallbackUrl(callbackUrl);
 
 		/** Setting Initial Parameters */
-		MerchantProperties.initialize(env, mid, key, website);
-
-		/** Setting Callback URL */
-		MerchantProperties.setCallbackUrl(callbackUrl);
+		MerchantProperties.initialize(env, mid, key, clientid, website);
 
 		/** Setting timeout for connection i.e. Connection Timeout */
 		MerchantProperties.setConnectionTimeout(new Time(5, TimeUnit.MINUTES));
@@ -332,8 +333,8 @@ public class Demo {
 		/** ..... Merchants code here .... */
 		/** 4. Merchants who want to get TransactionStatus */
 
-		/** Unique order for each order request */
-		String orderId = "orderId";
+		/** Order id for which you need to know payment status */
+		String orderId = "YOUR_ORDER_ID";
 
 		Time readTimeout = new Time(5, TimeUnit.MINUTES);
 
@@ -371,13 +372,13 @@ public class Demo {
 		/** ..... Merchants code here .... */
 		/** 5. Merchants who want to do refund */
 
-		/** Unique order for each order request */
-		String orderId = "orderId";
-		/** REF ID returned in Payment call */
-		String refId = "refId";
-		/** Transaction ID returned in Payment Api */
-		String txnId = "transactionId";
-		/** Transaction Type returned in Payment Api */
+		/** Order id for which refund request needs to be raised */
+		String orderId = "YOUR_ORDER_ID";
+		/** Unique refund id */
+		String refId = "UNIQUE_REFUND_ID";
+		/** Transaction ID returned in Paytm\pg\process\PaymentStatus Api */
+		String txnId = "PAYTM_TRANSACTION_ID";
+		/** Transaction Type for refund */
 		String txnType = "REFUND";
 
 		/**
@@ -421,10 +422,10 @@ public class Demo {
 		/** ..... Merchants code here .... */
 		/** 6. Merchants who want to get Refund Status */
 
-		/** Unique order for each order request */
-		String orderId = "orderId";
-		/** Unique ref id for each refund request */
-		String refId = "refId";
+		/** Order id for which refund status needs to be checked */
+		String orderId = "YOUR_ORDER_ID";
+		 /** Refund id of the refund request for which refund status needs to be checked */
+		String refId = "YOUR_REFUND_ID";
 
 		Time readTimeout = new Time(5, TimeUnit.MINUTES);
 
